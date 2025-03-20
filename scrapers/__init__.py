@@ -1,10 +1,8 @@
 from scrapers.base_scraper import BaseScraper
 from scrapers.regional_scraper import RegionalScraper
 from scrapers.chamber_scraper import ChamberScraper
-
-# Import other scrapers when implemented
-# from scrapers.national_scraper import NationalScraper
-# from scrapers.eu_scraper import EUScraper
+from scrapers.national_scraper import NationalScraper
+from scrapers.eu_scraper import EUScraper
 
 def get_scraper(source_name: str, base_url: str, scraper_type: str) -> BaseScraper:
     """
@@ -23,11 +21,9 @@ def get_scraper(source_name: str, base_url: str, scraper_type: str) -> BaseScrap
     elif scraper_type == "chamber":
         return ChamberScraper(source_name, base_url)
     elif scraper_type == "national":
-        # National scraper not implemented yet, use base scraper
-        return BaseScraper(source_name, base_url)
+        return NationalScraper(source_name, base_url)
     elif scraper_type == "eu":
-        # EU scraper not implemented yet, use base scraper
-        return BaseScraper(source_name, base_url)
+        return EUScraper(source_name, base_url)
     else:
         # Default to base scraper
         return BaseScraper(source_name, base_url)
